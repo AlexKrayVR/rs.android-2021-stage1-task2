@@ -2,8 +2,25 @@ package subtask2
 
 class Abbreviation {
 
-    // TODO: Complete the following function
     fun abbreviationFromA(a: String, b: String): String {
-        throw NotImplementedError("Not implemented")
+        var first = a.toLowerCase()
+        var second = b.toLowerCase()
+        var check = mutableListOf<Char>()
+        var indexStart = 0
+        for (item in second) {
+            for (x in indexStart until first.length) {
+                if (first[x] == item) {
+                    check.add(item)
+                    indexStart = x + 1
+                    break
+                }
+            }
+        }
+        return if (check.toString().replace("[^A-Za-z]".toRegex(), "") == second) {
+            "YES"
+        } else {
+            "NO"
+        }
     }
+
 }
